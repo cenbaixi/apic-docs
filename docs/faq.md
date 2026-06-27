@@ -105,27 +105,16 @@ ss -tlnp | grep :<端口>
 
 ## 忘记 / 找回管理员密码
 
-没有网页版「忘记密码」自助流程,管理员密码在**主控机上用命令行重置**:
+没有网页版「忘记密码」自助流程,管理员密码在**主控机上用命令行重置**(需先停面板,独占数据库):
 
-1. 停掉面板服务(以你的服务名为准):
-
-    ```bash
-    systemctl stop fp-master
-    ```
-
-2. 用 master 命令重置指定用户的密码(新密码至少 6 位):
-
-    ```bash
-    master -db <你的库.db> -reset-password <用户名> -new-password <新密码>
-    ```
-
-    省略 `-new-password` 则从标准输入读一行(不回显、更安全)。
-
-3. 重新启动面板,用新密码登录:
-
-    ```bash
-    systemctl start fp-master
-    ```
+```bash
+systemctl stop fp-master                       # 服务名以实际为准(需先停)
+# 指定新密码(admin 换成你的管理员用户名,新密码 ≥6 位):
+/opt/forward-panel/master -db /opt/forward-panel/panel.db -reset-password admin -new-password 'YourNewPass'
+# 或不带 -new-password,改成交互输入(密码不进历史 / 进程列表):
+#   /opt/forward-panel/master -db /opt/forward-panel/panel.db -reset-password admin
+systemctl start fp-master
+```
 
 !!! note
-    `-db` 指向面板实际用的数据库文件(以你的部署为准)。重置只改密码,不动其它数据。
+    路径按默认安装(`/opt/forward-panel/`);若装在别处,把二进制与 `-db` 路径改成你的实际值。重置只改密码,不动其它数据。
