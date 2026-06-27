@@ -65,3 +65,22 @@ ip -6 addr show scope global
 
 !!! tip
     大多数"规则不通"先看**入口节点的 agent 日志**;"面板异常 / 更新问题"看**面板日志**。
+
+## 管理员密码重置
+
+忘记管理员密码时,在**面板服务器**上用面板主程序重置(指定新密码):
+
+```bash
+systemctl stop fp-master                              # 服务名以实际为准(独占数据库,需先停)
+# 指定新密码:
+<面板二进制> -db <面板数据库路径> -reset-password <用户名> -new-password '<新密码>'
+# 或不带 -new-password,改成交互输入(不进历史/进程列表):
+#   <面板二进制> -db <面板数据库路径> -reset-password <用户名>
+systemctl start fp-master
+```
+
+- `<面板二进制>` / `<面板数据库路径>`:用 `systemctl cat fp-master | grep ExecStart` 看实际路径与参数。
+- 新密码至少 6 位;改完面板会自动退出,再启动即可,用新密码登录后建议在后台再改一次。
+
+!!! note
+    命令行直接带密码会进 shell 历史 / 进程列表,介意就用交互输入那种(不带 `-new-password`),或事后 `history -c`。
