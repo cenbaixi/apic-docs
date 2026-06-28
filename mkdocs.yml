@@ -79,6 +79,7 @@ nav:
   - 使用说明:
       - 安装部署: guide/install.md
       - 线路 · 节点 · 规则: guide/usage.md
+      - 高级参数（JSON）: guide/advanced.md
       - 更新升级: guide/update.md
   - 常见问题: faq.md
   - 参考: reference.md
