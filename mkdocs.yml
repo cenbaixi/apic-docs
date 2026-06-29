@@ -1,10 +1,9 @@
 site_name: APIC 文档
-site_url: https://docs.apic.gg/            # ← 改成你的实际文档地址(或删掉用默认 *.github.io)
+site_url: https://docs.apic.gg/
 site_description: APIC 中转 / CDN 面板 —— 安装、配置、运维与参考
 site_author: APIC
 copyright: Copyright &copy; APIC
 
-# ↓ 改成你放文档的仓库;若文档和代码同库,指向代码库即可
 repo_url: https://github.com/cenbaixi/apic-docs
 repo_name: apic-docs
 edit_uri: edit/main/docs/
@@ -79,7 +78,10 @@ nav:
   - 使用说明:
       - 安装部署: guide/install.md
       - 线路 · 节点 · 规则: guide/usage.md
-      - 高级参数（JSON）: guide/advanced.md
+      - 协议说明: guide/protocols.md
+      - 参数说明: guide/advanced.md
+      - 功能说明: guide/features.md
+      - 高级编辑逐项: guide/fields.md
       - 更新升级: guide/update.md
   - 常见问题: faq.md
   - 参考: reference.md
