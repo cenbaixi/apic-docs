@@ -1,0 +1,20 @@
+/* 首页卡网购买入口卡片 —— 醒目高亮框 */
+.apic-cta {
+  border: 2px solid var(--md-accent-fg-color, #4051b5);
+  border-radius: .6rem;
+  padding: 1rem 1.25rem 1.2rem;
+  margin: 1.6rem 0 2rem;
+  background: color-mix(in srgb, var(--md-accent-fg-color, #4051b5) 7%, transparent);
+  background: rgba(64, 81, 181, .07); /* 回退:不支持 color-mix 的浏览器 */
+}
+.apic-cta > p:first-child {
+  font-size: 1.15rem;
+  margin-top: .1rem;
+}
+.apic-cta .md-button {
+  margin: .5rem .4rem 0 0;
+}
+.apic-cta .md-button--primary {
+  font-weight: 700;
+  font-size: .82rem;
+}
